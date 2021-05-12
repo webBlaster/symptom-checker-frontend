@@ -1,5 +1,4 @@
 import React from "react";
-import TextField from "@material-ui/core/TextField";
 import { useState } from "react";
 import Result from "../components/result";
 import { API_URL } from "../constants";
@@ -17,10 +16,9 @@ const Home = () => {
 
   return (
     <div>
-      <TextField
-        style={{ width: "60%" }}
-        label="Search Symptoms"
-        variant="outlined"
+      <input
+        style={{ width: "60%", padding: "2%" }}
+        placeholder="Search Symptoms"
         onChange={getSymptoms}
       />
       <Result result={results} />
