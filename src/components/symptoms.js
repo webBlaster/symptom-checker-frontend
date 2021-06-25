@@ -1,4 +1,5 @@
 import React from "react";
+import "../App.css";
 
 const Symptoms = ({ symptoms }) => {
   let response =
@@ -9,7 +10,7 @@ const Symptoms = ({ symptoms }) => {
     ) : (
       <p></p>
     );
-  return <ul>{response}</ul>;
+  return <ul className="added-symptoms">{response}</ul>;
 };
 
 export default Symptoms;
