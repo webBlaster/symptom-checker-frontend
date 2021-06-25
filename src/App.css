@@ -13,4 +13,9 @@
   .added-symptoms {
     display: block !important;
   }
+
+  .added-symptoms li {
+    width: 200px;
+    margin-right: 2%;
+  }
 }
