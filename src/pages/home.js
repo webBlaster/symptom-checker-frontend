@@ -7,7 +7,7 @@ import { API_URL } from "../constants";
 const Home = () => {
   const [results, setResult] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [symptoms, setSymptoms] = useState([]);
+  let [symptoms, setSymptoms] = useState([]);
 
   const getSymptoms = async (event) => {
     if (!event.target.value) return;
@@ -25,7 +25,7 @@ const Home = () => {
   const addSymptom = (item) => {
     let newSymptomArray = [...symptoms, ...[item]];
     setSymptoms(newSymptomArray);
-    setInterval(() => console.log(symptoms), 5000);
+    setTimeout(() => console.log(symptoms), 5000);
   };
 
   return (
