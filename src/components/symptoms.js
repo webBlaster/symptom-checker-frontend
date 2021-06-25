@@ -5,7 +5,12 @@ const Symptoms = ({ symptoms }) => {
   let response =
     symptoms.length > 0 ? (
       symptoms.map((item) => {
-        return <li key={Math.random() * 100}>{item.Name}</li>;
+        return (
+          <li key={Math.random() * 100}>
+            {item.Name}
+            <p className="cancel">x</p>
+          </li>
+        );
       })
     ) : (
       <p></p>

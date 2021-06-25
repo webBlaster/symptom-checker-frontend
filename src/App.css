@@ -1,12 +1,33 @@
 .added-symptoms {
   display: flex;
+  width: 65%;
+  margin: 10px auto;
+  border: 1px solid black;
+}
+
+.cancel {
+  background: rgba(255, 255, 255, 0.678);
+
+  display: inline-block;
+  padding: 5px;
+  width: 10px;
+  cursor: pointer;
+  margin-left: 5px;
+  color: black;
+  border-radius: 500px;
+}
+.cancel:hover {
+  background: rgba(255, 255, 255, 0.514);
 }
 .added-symptoms li {
   background: black;
-  margin-right: 2%;
+  display: inline-block;
+  align-items: center;
+  margin: 1%;
   color: white;
-  padding: 3px !important;
+  padding: 0 5px !important;
   font-size: 10px;
+  border-radius: 5px;
 }
 
 @media screen and (max-width: 800px) {
