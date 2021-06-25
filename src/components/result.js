@@ -1,6 +1,6 @@
 import React from "react";
 
-const Result = ({ result }) => {
+const Result = ({ result, addSymptom }) => {
   let response =
     result.length > 0 ? (
       result.map((res) => {
@@ -9,13 +9,19 @@ const Result = ({ result }) => {
             {res._source.Name}{" "}
             <span>
               {" "}
-              <button>Add</button>
+              <button
+                onClick={() => {
+                  addSymptom(res._source);
+                }}
+              >
+                Add
+              </button>
             </span>
           </li>
         );
       })
     ) : (
-      <p>no search results found</p>
+      <p></p>
     );
   return <ul>{response}</ul>;
 };
