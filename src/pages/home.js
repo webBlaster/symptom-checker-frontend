@@ -35,9 +35,9 @@ const Home = () => {
         placeholder="Search Symptoms"
         onChange={getSymptoms}
       />
+      <Symptoms symptoms={symptoms} />
       <Result result={results} addSymptom={addSymptom} />
       <span hidden={!loading}>Loading....</span>
-      <Symptoms symptoms={symptoms} />
     </div>
   );
 };
