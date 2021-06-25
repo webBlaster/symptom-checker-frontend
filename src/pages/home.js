@@ -25,6 +25,7 @@ const Home = () => {
   const addSymptom = (item) => {
     let newSymptomArray = [...symptoms, ...[item]];
     setSymptoms(newSymptomArray);
+    setInterval(() => console.log(symptoms), 5000);
   };
 
   return (
