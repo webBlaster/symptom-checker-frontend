@@ -5,6 +5,12 @@
   background: black;
   margin-right: 2%;
   color: white;
-  padding: 2px !important;
+  padding: 3px !important;
   font-size: 10px;
+}
+
+@media screen and (max-width: 800px) {
+  .added-symptoms {
+    display: block !important;
+  }
 }
