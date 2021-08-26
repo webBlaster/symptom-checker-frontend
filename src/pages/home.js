@@ -14,7 +14,7 @@ const Home = () => {
     setLoading(true);
     setResult([]);
     let value = event.target.value;
-    let response = await fetch(`${API_URL}/getSymptoms/${value}`);
+    let response = await fetch(`${API_URL}/symptom/${value}`);
     let result = await response.json();
     if (result) {
       setLoading(false);
@@ -31,7 +31,7 @@ const Home = () => {
   return (
     <div>
       <input
-        style={{ width: "60%", padding: "2%" }}
+        style={{ width: "40%", padding: "1%", fontSize: "20px" }}
         placeholder="Search Symptoms"
         onChange={getSymptoms}
       />
