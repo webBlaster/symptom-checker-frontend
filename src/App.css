@@ -1,17 +1,20 @@
 .added-symptoms {
-  display: flex;
-  width: 65%;
+  width: 100%;
   margin: 10px auto;
+}
+
+.added-symptoms p {
+  opacity: 0.6;
 }
 
 .cancel {
   background: rgba(255, 255, 255, 0.678);
 
   display: inline-block;
-  padding: 5px;
+  padding: 0;
   width: 10px;
   cursor: pointer;
-  margin-left: 5px;
+  margin: 5px 0;
   color: black;
   border-radius: 500px;
 }
@@ -19,23 +22,13 @@
   background: rgba(255, 255, 255, 0.514);
 }
 .added-symptoms li {
-  background: black;
-  display: inline-block;
   align-items: center;
-  margin: 1%;
-  color: white;
-  padding: 0 5px !important;
-  font-size: 9px;
-  border-radius: 5px;
+  margin: 0;
+  padding: 0;
 }
 
 @media screen and (max-width: 800px) {
   .added-symptoms {
     display: block !important;
-  }
-
-  .added-symptoms li {
-    width: 100px;
-    margin-right: 2%;
   }
 }

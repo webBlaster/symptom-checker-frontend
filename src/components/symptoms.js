@@ -13,7 +13,7 @@ const Symptoms = ({ symptoms }) => {
         );
       })
     ) : (
-      <p></p>
+      <p>No symptoms selected</p>
     );
   return <ul className="added-symptoms">{response}</ul>;
 };

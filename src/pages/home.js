@@ -23,9 +23,14 @@ const Home = () => {
   };
 
   const addSymptom = (item) => {
+    if (isSymptomSelected(item)) return;
     let newSymptomArray = [...symptoms, ...[item]];
     setSymptoms(newSymptomArray);
-    setTimeout(() => console.log(symptoms), 5000);
+    //setTimeout(() => console.log(symptoms), 5000);
+  };
+
+  const isSymptomSelected = (symptom) => {
+    return symptoms.includes(symptom);
   };
 
   return (
@@ -35,9 +40,18 @@ const Home = () => {
         placeholder="Search Symptoms"
         onChange={getSymptoms}
       />
-      <Symptoms symptoms={symptoms} />
       <Result result={results} addSymptom={addSymptom} />
       <span hidden={!loading}>Loading....</span>
+      <hr />
+      <Symptoms symptoms={symptoms} />
+      <hr />
+      <button
+        className="btn"
+        style={{ width: "40%", padding: "1%", fontSize: "20px" }}
+        onClick={() => console.log("send request")}
+      >
+        Diagnose
+      </button>
     </div>
   );
 };
