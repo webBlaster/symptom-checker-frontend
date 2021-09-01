@@ -2,12 +2,14 @@ import React from "react";
 import { useState } from "react";
 import Result from "../components/result";
 import Symptoms from "../components/symptoms";
+import Diagnosis from "../components/diagnosis";
 import { API_URL } from "../constants";
 
 const Home = () => {
   const [results, setResult] = useState([]);
   const [loading, setLoading] = useState(false);
   let [symptoms, setSymptoms] = useState([]);
+  let [diagnosis, setDiagnosis] = useState([]);
 
   const getSymptoms = async (event) => {
     if (!event.target.value) return;
@@ -26,7 +28,6 @@ const Home = () => {
     if (isSymptomSelected(item)) return;
     let newSymptomArray = [...symptoms, ...[item]];
     setSymptoms(newSymptomArray);
-    //setTimeout(() => console.log(symptoms), 5000);
   };
 
   const isSymptomSelected = (symptom) => {
@@ -34,10 +35,18 @@ const Home = () => {
   };
 
   const getDiagnosis = async () => {
-    const string = symptoms.map((symptom) => {
+    const symptomIds = symptoms.map((symptom) => {
       return symptom.ID;
     });
-    console.log(string.toString());
+    const request = await fetch(
+      `${API_URL}/diagnose/${symptomIds}/male/2000`
+    ).catch((error) => console.log(error));
+    const response = await request;
+    if (response) {
+      const result = await response.json();
+      console.log(result);
+      setDiagnosis(result);
+    }
   };
 
   return (
@@ -60,6 +69,7 @@ const Home = () => {
       >
         Diagnose
       </button>
+      <Diagnosis result={diagnosis} />
     </div>
   );
 };
