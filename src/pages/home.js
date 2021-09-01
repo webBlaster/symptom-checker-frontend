@@ -33,6 +33,13 @@ const Home = () => {
     return symptoms.includes(symptom);
   };
 
+  const getDiagnosis = async () => {
+    const string = symptoms.map((symptom) => {
+      return symptom.ID;
+    });
+    console.log(string.toString());
+  };
+
   return (
     <div>
       <input
@@ -48,7 +55,8 @@ const Home = () => {
       <button
         className="btn"
         style={{ width: "40%", padding: "1%", fontSize: "20px" }}
-        onClick={() => console.log("send request")}
+        onClick={getDiagnosis}
+        disabled={symptoms.length === 0}
       >
         Diagnose
       </button>
