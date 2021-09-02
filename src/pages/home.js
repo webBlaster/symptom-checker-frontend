@@ -44,7 +44,7 @@ const Home = () => {
     const response = await request;
     if (response) {
       const result = await response.json();
-      console.log(result);
+      setSymptoms([]);
       setDiagnosis(result);
     }
   };
