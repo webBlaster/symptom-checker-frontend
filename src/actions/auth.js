@@ -16,7 +16,7 @@ export const register = (values, history, dispatch) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ ...values }),
-    }).catch((error) => console.log(error));
+    }).catch((error) => alert(error));
 
     const response = await request;
     if (response) {
@@ -40,7 +40,7 @@ export const login = (values, history, dispatch) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ ...values }),
-    }).catch((error) => console.log(error));
+    }).catch((error) => console.alert(error));
 
     const response = await request;
     if (response) {
@@ -49,6 +49,7 @@ export const login = (values, history, dispatch) => {
       if (result.email) {
         dispatch({ type: LOGIN_SUCCESSFUL, payload: result });
         history.push("/dashboard");
+        return;
       }
     }
   };

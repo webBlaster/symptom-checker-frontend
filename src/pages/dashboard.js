@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Result from "../components/result";
 import Symptoms from "../components/symptoms";
 import Diagnosis from "../components/diagnosis";
@@ -9,8 +9,11 @@ import { API_URL } from "../constants";
 const Dashboard = () => {
   const [results, setResult] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [diagnoseLoading, setDiagnoseLoading] = useState(false);
   let [symptoms, setSymptoms] = useState([]);
   let [diagnosis, setDiagnosis] = useState([]);
+
+  let inputRef = useRef();
 
   const getSymptoms = async (event) => {
     if (!event.target.value) return;
@@ -29,6 +32,7 @@ const Dashboard = () => {
     if (isSymptomSelected(item)) return;
     let newSymptomArray = [...symptoms, ...[item]];
     setSymptoms(newSymptomArray);
+    inputRef.current.value = "";
   };
 
   const isSymptomSelected = (symptom) => {
@@ -36,16 +40,21 @@ const Dashboard = () => {
   };
 
   const getDiagnosis = async () => {
+    setDiagnoseLoading(true);
     const symptomIds = symptoms.map((symptom) => {
       return symptom.ID;
     });
     const request = await fetch(
       `${API_URL}/diagnose/${symptomIds}/male/2000`
-    ).catch((error) => console.log(error));
+    ).catch((error) => {
+      console.log(error);
+      setDiagnoseLoading(false);
+    });
     const response = await request;
     if (response) {
       const result = await response.json();
       setSymptoms([]);
+      setDiagnoseLoading(false);
       setDiagnosis(result);
     }
   };
@@ -58,6 +67,7 @@ const Dashboard = () => {
         style={{ width: "40%", padding: "1%", fontSize: "20px" }}
         placeholder="Search Symptoms"
         onChange={getSymptoms}
+        ref={inputRef}
       />
       <Result result={results} addSymptom={addSymptom} />
       <span hidden={!loading}>Loading....</span>
@@ -70,7 +80,7 @@ const Dashboard = () => {
         onClick={getDiagnosis}
         disabled={symptoms.length === 0}
       >
-        Diagnose
+        {diagnoseLoading ? "Loading...." : "Diagnose"}
       </button>
       <Diagnosis result={diagnosis} />
     </>
