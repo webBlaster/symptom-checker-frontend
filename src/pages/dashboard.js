@@ -3,9 +3,10 @@ import { useState } from "react";
 import Result from "../components/result";
 import Symptoms from "../components/symptoms";
 import Diagnosis from "../components/diagnosis";
+import Header from "../components/header";
 import { API_URL } from "../constants";
 
-const Home = () => {
+const Dashboard = () => {
   const [results, setResult] = useState([]);
   const [loading, setLoading] = useState(false);
   let [symptoms, setSymptoms] = useState([]);
@@ -50,7 +51,9 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <>
+      <Header />
+
       <input
         style={{ width: "40%", padding: "1%", fontSize: "20px" }}
         placeholder="Search Symptoms"
@@ -70,8 +73,8 @@ const Home = () => {
         Diagnose
       </button>
       <Diagnosis result={diagnosis} />
-    </div>
+    </>
   );
 };
 
-export default Home;
+export default Dashboard;

@@ -32,3 +32,61 @@
     display: block !important;
   }
 }
+
+.header {
+  display: flex;
+  background-color: whitesmoke;
+  width: 80%;
+  margin: 0;
+  justify-content: space-between;
+  padding: 0 10%;
+}
+
+.header ul {
+  display: flex;
+}
+
+.header ul li {
+  margin: 0 15%;
+}
+
+.about {
+  width: 80%;
+  margin: 5% auto;
+  background-color: white;
+  padding: 5%;
+}
+
+.register,
+.login {
+  padding: 4% 13%;
+  width: 20%;
+  margin-top: 5% !important;
+  margin: 0 auto;
+  background: white;
+}
+
+.login input,
+.register input {
+  background-color: rgb(212, 204, 204);
+  width: 69%;
+  margin: 3% 0;
+  padding: 5%;
+  border: none;
+  color: black;
+}
+
+.auth-btn {
+  background-color: powderblue !important;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+  .header ul li {
+    margin: 0 4%;
+  }
+  .register,
+  .login {
+    width: 60% !important;
+  }
+}
