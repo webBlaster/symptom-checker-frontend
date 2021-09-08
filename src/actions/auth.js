@@ -18,7 +18,7 @@ export const register = (values, history, dispatch, setLoading) => {
       },
       body: JSON.stringify({ ...values }),
     }).catch((error) => {
-      alert(error);
+      console.log(error);
       setLoading(false);
     });
 
@@ -47,7 +47,7 @@ export const login = (values, history, dispatch, setLoading) => {
       },
       body: JSON.stringify({ ...values }),
     }).catch((error) => {
-      console.alert(error);
+      console.log(error);
       setLoading(false);
     });
 
