@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import React from "react";
 import Header from "../components/header";
 
 const History = () => {
