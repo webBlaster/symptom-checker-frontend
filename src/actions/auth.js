@@ -57,7 +57,12 @@ export const login = (values, history, dispatch, setLoading) => {
       const result = await response.json();
       console.log(result);
       if (result.email) {
-        dispatch({ type: LOGIN_SUCCESSFUL, payload: result });
+        dispatch({
+          type: LOGIN_SUCCESSFUL,
+          payload: {
+            ...result,
+          },
+        });
         history.push("/dashboard");
         return;
       }

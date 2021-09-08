@@ -17,7 +17,10 @@ const auth = (state = initialState, action) => {
   switch (action.type) {
     case REGISTER_SUCCESSFUL:
     case LOGIN_SUCCESSFUL:
-      return Object.assign({}, state, { isAuthenticated: true });
+      return Object.assign({}, state, {
+        isAuthenticated: true,
+        ...action.payload,
+      });
     case REGISTER_FAILED:
     case LOGIN_FAILED:
       return Object.assign({}, state, { isAuthenticated: false });

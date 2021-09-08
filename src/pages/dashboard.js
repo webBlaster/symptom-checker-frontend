@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useRef } from "react";
+import { useSelector } from "react-redux";
 import Result from "../components/result";
 import Symptoms from "../components/symptoms";
 import Diagnosis from "../components/diagnosis";
@@ -12,7 +13,7 @@ const Dashboard = () => {
   const [diagnoseLoading, setDiagnoseLoading] = useState(false);
   let [symptoms, setSymptoms] = useState([]);
   let [diagnosis, setDiagnosis] = useState([]);
-
+  let profile = useSelector((state) => state.auth);
   let inputRef = useRef();
 
   const getSymptoms = async (event) => {
@@ -45,7 +46,7 @@ const Dashboard = () => {
       return symptom.ID;
     });
     const request = await fetch(
-      `${API_URL}/diagnose/${symptomIds}/male/2000`
+      `${API_URL}/diagnose/${symptomIds}/${profile.gender}/${profile.year_of_birth}/${profile._id}`
     ).catch((error) => {
       console.log(error);
       setDiagnoseLoading(false);
@@ -57,6 +58,7 @@ const Dashboard = () => {
       setDiagnoseLoading(false);
       setDiagnosis(result);
     }
+    console.log(profile);
   };
 
   return (
