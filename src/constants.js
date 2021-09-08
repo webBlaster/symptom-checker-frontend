@@ -1,5 +1,4 @@
-//export const API_URL = "https://symp-checker.herokuapp.com";
-export const API_URL = "http://localhost:8000";
+export const API_URL = "https://symp-checker.herokuapp.com";
 export const LOGIN_SUCCESSFUL = "LOGIN_SUCCESSFUL";
 export const LOGIN_FAILED = "LOGIN_FAILED";
 
