@@ -11,13 +11,14 @@ const Signup = () => {
     gender: "male",
     year_of_birth: "1910",
   });
+  const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
   const history = useHistory();
 
   const signUp = (event) => {
     event.preventDefault();
-    dispatch(register(values, history, dispatch));
+    dispatch(register(values, history, dispatch, setLoading));
   };
 
   const handleChange = (e) => {
@@ -62,7 +63,11 @@ const Signup = () => {
           />
           <br />
 
-          <input className="auth-btn" type="submit" value="Sign Up" />
+          <input
+            className="auth-btn"
+            type="submit"
+            value={loading ? "Loading..." : "Sign Up"}
+          />
         </form>
       </div>
     </>

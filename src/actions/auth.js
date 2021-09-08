@@ -6,9 +6,10 @@ import {
   API_URL,
 } from "../constants";
 
-export const register = (values, history, dispatch) => {
+export const register = (values, history, dispatch, setLoading) => {
   return async (dispatch) => {
     console.log(values);
+    setLoading(true);
     //fetch request
     let request = await fetch(`${API_URL}/register`, {
       method: "POST",
@@ -16,10 +17,14 @@ export const register = (values, history, dispatch) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ ...values }),
-    }).catch((error) => alert(error));
+    }).catch((error) => {
+      alert(error);
+      setLoading(false);
+    });
 
     const response = await request;
     if (response) {
+      setLoading(false);
       const result = await response.json();
       console.log(result);
       if (result.email) {
@@ -30,9 +35,10 @@ export const register = (values, history, dispatch) => {
   };
 };
 
-export const login = (values, history, dispatch) => {
+export const login = (values, history, dispatch, setLoading) => {
   return async (dispatch) => {
     console.log(values);
+    setLoading(true);
     //fetch request
     let request = await fetch(`${API_URL}/login`, {
       method: "POST",
@@ -40,10 +46,14 @@ export const login = (values, history, dispatch) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ ...values }),
-    }).catch((error) => console.alert(error));
+    }).catch((error) => {
+      console.alert(error);
+      setLoading(false);
+    });
 
     const response = await request;
     if (response) {
+      setLoading(false);
       const result = await response.json();
       console.log(result);
       if (result.email) {

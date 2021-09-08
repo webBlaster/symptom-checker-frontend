@@ -6,6 +6,7 @@ import { login } from "../actions/auth";
 
 const Signin = () => {
   const [values, setValues] = useState({ email: "", password: "" });
+  const [loading, setLoading] = useState(false);
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const Signin = () => {
 
   const signIn = (event) => {
     event.preventDefault();
-    dispatch(login(values, history, dispatch));
+    dispatch(login(values, history, dispatch, setLoading));
   };
 
   return (
@@ -41,7 +42,11 @@ const Signin = () => {
             onChange={handleChange}
           />
           <br />
-          <input className="auth-btn" type="submit" value="Sign In" />
+          <input
+            className="auth-btn"
+            type="submit"
+            value={loading ? "Loading..." : "Sign In"}
+          />
         </form>
       </div>
     </>
