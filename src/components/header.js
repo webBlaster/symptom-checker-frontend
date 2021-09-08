@@ -11,9 +11,17 @@ const Header = () => {
         <li>
           <Link to="/about">About</Link>
         </li>
-        <li>
-          <Link to="/register">Register</Link>
-        </li>
+
+        {!isAuthenticated ? (
+          <li>
+            <Link to="/register">Register</Link>
+          </li>
+        ) : null}
+        {isAuthenticated ? (
+          <li>
+            <Link to="/history">History</Link>
+          </li>
+        ) : null}
         <li>
           {isAuthenticated ? <a href="/">Logout</a> : <a href="/">login</a>}
         </li>

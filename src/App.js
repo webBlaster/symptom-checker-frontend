@@ -5,6 +5,7 @@ import Dashboard from "./pages/dashboard";
 import Signup from "./pages/signup";
 import Signin from "./pages/signin";
 import About from "./pages/about";
+import History from "./pages/history";
 
 function App() {
   let isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -16,6 +17,9 @@ function App() {
         <Route path="/register" exact component={Signup} />
         <Route exact path="/dashboard">
           {isAuthenticated ? <Dashboard /> : <Signin />}
+        </Route>
+        <Route exact path="/history">
+          {isAuthenticated ? <History /> : <Signin />}
         </Route>
         <Route exact path="/about" component={About} />
       </Switch>
