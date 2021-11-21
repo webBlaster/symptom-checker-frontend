@@ -1,10 +1,8 @@
 import React from "react";
 import { useState, useRef } from "react";
-import { useSelector } from "react-redux";
 import Result from "../components/result";
 import Symptoms from "../components/symptoms";
 import Diagnosis from "../components/diagnosis";
-import Header from "../components/header";
 import { API_URL } from "../constants";
 
 const Dashboard = () => {
@@ -13,7 +11,6 @@ const Dashboard = () => {
   const [diagnoseLoading, setDiagnoseLoading] = useState(false);
   let [symptoms, setSymptoms] = useState([]);
   let [diagnosis, setDiagnosis] = useState([]);
-  let profile = useSelector((state) => state.auth);
   let inputRef = useRef();
 
   const getSymptoms = async (event) => {
@@ -46,7 +43,7 @@ const Dashboard = () => {
       return symptom.ID;
     });
     const request = await fetch(
-      `${API_URL}/diagnose/${symptomIds}/${profile.gender}/${profile.year_of_birth}/${profile._id}`
+      `${API_URL}/diagnose/${symptomIds}/${"male"}/${"1996"}/${"2"}`
     ).catch((error) => {
       console.log(error);
       setDiagnoseLoading(false);
@@ -58,33 +55,32 @@ const Dashboard = () => {
       setDiagnoseLoading(false);
       setDiagnosis(result);
     }
-    console.log(profile);
   };
 
   return (
     <>
-      <Header />
-
-      <input
-        style={{ width: "40%", padding: "1%", fontSize: "20px" }}
-        placeholder="Search Symptoms"
-        onChange={getSymptoms}
-        ref={inputRef}
-      />
-      <Result result={results} addSymptom={addSymptom} />
-      <span hidden={!loading}>Loading....</span>
-      <hr />
-      <Symptoms symptoms={symptoms} />
-      <hr />
-      <button
-        className="btn"
-        style={{ width: "40%", padding: "1%", fontSize: "20px" }}
-        onClick={getDiagnosis}
-        disabled={symptoms.length === 0}
-      >
-        {diagnoseLoading ? "Loading...." : "Diagnose"}
-      </button>
-      <Diagnosis result={diagnosis} />
+      <div className="container">
+        <h4>Search for your symptoms</h4>
+        <br />
+        <input
+          placeholder="Search Symptoms"
+          onChange={getSymptoms}
+          ref={inputRef}
+        />
+        <Result result={results} addSymptom={addSymptom} />
+        <span hidden={!loading}>Loading....</span>
+        <hr />
+        <Symptoms symptoms={symptoms} />
+        <hr />
+        <button
+          className="btn"
+          onClick={getDiagnosis}
+          disabled={symptoms.length === 0}
+        >
+          {diagnoseLoading ? "Loading...." : "Diagnose"}
+        </button>
+        <Diagnosis result={diagnosis} />
+      </div>
     </>
   );
 };
