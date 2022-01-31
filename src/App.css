@@ -7,12 +7,13 @@ label {
 .added-symptoms {
   width: 100%;
   margin: 10px auto;
-  border: 1px dotted black;
+  border: 1px dashed red;
   padding: 20px !important;
   text-align: left;
 }
 
-.added-symptoms p {
+.added-symptoms p,
+.symptoms-container p {
   opacity: 0.6;
 }
 
@@ -36,8 +37,19 @@ label {
   padding: 0;
 }
 
+.symptoms-container {
+  border: 1px dashed green;
+  text-align: left;
+  padding: 20px !important;
+}
+
 @media screen and (max-width: 800px) {
   .added-symptoms {
     display: block !important;
+  }
+
+  h4 {
+    font-size: 20px;
+    font-weight: 500;
   }
 }
