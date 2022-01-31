@@ -63,17 +63,17 @@ const Dashboard = () => {
         <h4>Search for your symptoms</h4>
         <br />
         <input
-          placeholder="Search Symptoms"
+          placeholder="Search Symptoms(e.g headaches)"
           onChange={getSymptoms}
           ref={inputRef}
         />
         <Result result={results} addSymptom={addSymptom} />
         <span hidden={!loading}>Loading....</span>
-        <hr />
+
         <Symptoms symptoms={symptoms} />
-        <hr />
+
         <button
-          className="btn"
+          className="btn green"
           onClick={getDiagnosis}
           disabled={symptoms.length === 0}
         >

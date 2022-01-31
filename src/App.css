@@ -7,34 +7,40 @@ label {
 .added-symptoms {
   width: 100%;
   margin: 10px auto;
+  border: 1px dashed red;
+  padding: 20px !important;
+  text-align: left;
 }
 
-.added-symptoms p {
+.added-symptoms p,
+.symptoms-container p {
   opacity: 0.6;
 }
 
 .cancel {
-  background: rgba(255, 255, 255, 0.678);
-
-  display: inline-block;
-  padding: 0;
-  width: 10px;
-  cursor: pointer;
   margin: 5px 0;
-  color: black;
-  border-radius: 500px;
 }
-.cancel:hover {
-  background: rgba(255, 255, 255, 0.514);
-}
+
 .added-symptoms li {
   align-items: center;
   margin: 0;
+  margin-bottom: 20px;
   padding: 0;
+}
+
+.symptoms-container {
+  border: 1px dashed green;
+  text-align: left;
+  padding: 20px !important;
 }
 
 @media screen and (max-width: 800px) {
   .added-symptoms {
     display: block !important;
+  }
+
+  h4 {
+    font-size: 20px;
+    font-weight: 500;
   }
 }

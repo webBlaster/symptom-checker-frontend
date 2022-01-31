@@ -15,7 +15,7 @@ const Diagnosis = ({ result }) => {
     ) : (
       <p></p>
     );
-  return <ul>{response}</ul>;
+  return <ul className="card">{response}</ul>;
 };
 
 export default Diagnosis;

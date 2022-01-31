@@ -8,7 +8,12 @@ const Symptoms = ({ symptoms }) => {
         return (
           <li key={Math.random() * 100}>
             {item.Name}
-            <p className="cancel">x</p>
+            <br />
+            <span>
+              <button className="btn-floating btn-small waves-effect waves-light red">
+                <i class="material-icons">remove</i>
+              </button>
+            </span>
           </li>
         );
       })
