@@ -34,6 +34,11 @@ label {
   padding: 20px !important;
 }
 
+.diagnosis-container {
+  padding: 20px;
+  text-align: left;
+}
+
 @media screen and (max-width: 800px) {
   .added-symptoms {
     display: block !important;

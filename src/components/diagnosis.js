@@ -6,16 +6,21 @@ const Diagnosis = ({ result }) => {
       result.map((res) => {
         return (
           <li key={Math.random() * 100}>
-            {res.Issue.Name}
-            <br />
-            {res.Issue.Accuracy} Accuracy
+            {res.Issue.Name} {"("}
+            {res.Issue.Accuracy} Accuracy{")"}
+            <div class="progress">
+              <div
+                class="determinate green"
+                style={{ width: `${res.Issue.Accuracy}%` }}
+              ></div>
+            </div>
           </li>
         );
       })
     ) : (
       <p></p>
     );
-  return <ul className="card">{response}</ul>;
+  return <ul className="diagnosis-container">{response}</ul>;
 };
 
 export default Diagnosis;
