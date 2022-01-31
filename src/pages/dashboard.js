@@ -52,6 +52,7 @@ const Dashboard = () => {
     if (response) {
       const result = await response.json();
       setSymptoms([]);
+      setResult([]);
       setDiagnoseLoading(false);
       setDiagnosis(result);
     }
