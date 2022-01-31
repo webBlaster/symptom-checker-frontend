@@ -68,7 +68,11 @@ const Dashboard = () => {
           ref={inputRef}
         />
         <Result result={results} addSymptom={addSymptom} />
-        <span hidden={!loading}>Loading....</span>
+        <span hidden={!loading}>
+          <div class="progress">
+            <div class="indeterminate"></div>
+          </div>
+        </span>
 
         <Symptoms symptoms={symptoms} />
 
